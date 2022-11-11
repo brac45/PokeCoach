@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		569C19B0291EC9200041DC11 /* ChartNavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C19AF291EC9200041DC11 /* ChartNavigatorView.swift */; };
+		569C19B5291ED35C0041DC11 /* HeartrateDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C19B4291ED35C0041DC11 /* HeartrateDataStruct.swift */; };
 		569F7C642919F68F000A006B /* PokeCoachApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C632919F68F000A006B /* PokeCoachApp.swift */; };
 		569F7C662919F68F000A006B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C652919F68F000A006B /* ContentView.swift */; };
 		569F7C682919F691000A006B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 569F7C672919F691000A006B /* Assets.xcassets */; };
@@ -14,6 +16,7 @@
 		569F7C752919F692000A006B /* PokeCoachTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C742919F692000A006B /* PokeCoachTests.swift */; };
 		569F7C7F2919F692000A006B /* PokeCoachUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C7E2919F692000A006B /* PokeCoachUITests.swift */; };
 		569F7C812919F692000A006B /* PokeCoachUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C802919F692000A006B /* PokeCoachUITestsLaunchTests.swift */; };
+		569F7C8F2919F7E2000A006B /* HeartrateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C8E2919F7E2000A006B /* HeartrateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		569C19AF291EC9200041DC11 /* ChartNavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartNavigatorView.swift; sourceTree = "<group>"; };
+		569C19B4291ED35C0041DC11 /* HeartrateDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartrateDataStruct.swift; sourceTree = "<group>"; };
 		569F7C602919F68F000A006B /* PokeCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569F7C632919F68F000A006B /* PokeCoachApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCoachApp.swift; sourceTree = "<group>"; };
 		569F7C652919F68F000A006B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +49,7 @@
 		569F7C7A2919F692000A006B /* PokeCoachUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokeCoachUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		569F7C7E2919F692000A006B /* PokeCoachUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCoachUITests.swift; sourceTree = "<group>"; };
 		569F7C802919F692000A006B /* PokeCoachUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCoachUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		569F7C8E2919F7E2000A006B /* HeartrateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartrateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		569C19B1291ED1A20041DC11 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				569F7C652919F68F000A006B /* ContentView.swift */,
+				569C19AF291EC9200041DC11 /* ChartNavigatorView.swift */,
+				569F7C8E2919F7E2000A006B /* HeartrateView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		569F7C572919F68F000A006B = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +110,9 @@
 		569F7C622919F68F000A006B /* PokeCoach */ = {
 			isa = PBXGroup;
 			children = (
+				569C19B1291ED1A20041DC11 /* Views */,
+				569F7C902919F8D9000A006B /* Model */,
 				569F7C632919F68F000A006B /* PokeCoachApp.swift */,
-				569F7C652919F68F000A006B /* ContentView.swift */,
 				569F7C672919F691000A006B /* Assets.xcassets */,
 				569F7C692919F692000A006B /* Preview Content */,
 			);
@@ -125,6 +142,14 @@
 				569F7C802919F692000A006B /* PokeCoachUITestsLaunchTests.swift */,
 			);
 			path = PokeCoachUITests;
+			sourceTree = "<group>";
+		};
+		569F7C902919F8D9000A006B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				569C19B4291ED35C0041DC11 /* HeartrateDataStruct.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +282,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				569F7C8F2919F7E2000A006B /* HeartrateView.swift in Sources */,
 				569F7C662919F68F000A006B /* ContentView.swift in Sources */,
 				569F7C642919F68F000A006B /* PokeCoachApp.swift in Sources */,
+				569C19B5291ED35C0041DC11 /* HeartrateDataStruct.swift in Sources */,
+				569C19B0291EC9200041DC11 /* ChartNavigatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
