@@ -31,6 +31,23 @@ class HeartrateModelData: ObservableObject {
             .init(hr: 121, isoDateString: "2022-11-17T11:41:35.000Z")
         ]
     }
+    
+    func fillWithGPXData() {
+        /// Read file
+        if let gpxUrl = Bundle.main.url(forResource: "sample_run_1", withExtension: "gpx") {
+            
+        } else {
+            self.fillWithDummyData()
+        }
+    }
+    
+    static func getStringPathForGPXData() -> String {
+        if let path = Bundle.main.path(forResource: "sample_run_1", ofType: "gpx") {
+            return path
+        } else {
+            return "UNKNOWN_PATH"
+        }
+    }
 }
 
 struct HeartrateDataPoint: Identifiable {

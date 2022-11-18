@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct SettingsView: View {
+    //@ObservedObject var hrData: HeartrateModelData
+    
     var body: some View {
-        Text("SettingsView")
-    }
-}
-
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
+        let testStr = HeartrateModelData.getStringPathForGPXData()
+        Text(testStr)
     }
 }

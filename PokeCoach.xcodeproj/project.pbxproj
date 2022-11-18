@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5677E29B2927D9B80094E051 /* sample_run_1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5677E29A2927D9B80094E051 /* sample_run_1.gpx */; };
 		5677E29F292810800094E051 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677E29E292810800094E051 /* SettingsView.swift */; };
+		5677E2A1292833C90094E051 /* sample_run_1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5677E2A0292833C90094E051 /* sample_run_1.gpx */; };
+		5677E2A2292833C90094E051 /* sample_run_1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5677E2A0292833C90094E051 /* sample_run_1.gpx */; };
+		5677E2A3292833C90094E051 /* sample_run_1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5677E2A0292833C90094E051 /* sample_run_1.gpx */; };
 		569C19B5291ED35C0041DC11 /* HeartrateModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C19B4291ED35C0041DC11 /* HeartrateModelData.swift */; };
 		569F7C642919F68F000A006B /* PokeCoachApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C632919F68F000A006B /* PokeCoachApp.swift */; };
 		569F7C662919F68F000A006B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C652919F68F000A006B /* ContentView.swift */; };
@@ -38,8 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5677E29A2927D9B80094E051 /* sample_run_1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = sample_run_1.gpx; path = ../../../../../Downloads/sample_run_1.gpx; sourceTree = "<group>"; };
 		5677E29E292810800094E051 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5677E2A0292833C90094E051 /* sample_run_1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample_run_1.gpx; sourceTree = "<group>"; };
 		569C19B4291ED35C0041DC11 /* HeartrateModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartrateModelData.swift; sourceTree = "<group>"; };
 		569F7C602919F68F000A006B /* PokeCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569F7C632919F68F000A006B /* PokeCoachApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCoachApp.swift; sourceTree = "<group>"; };
@@ -82,7 +84,7 @@
 		561A032F292707B600C42C5A /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				5677E29A2927D9B80094E051 /* sample_run_1.gpx */,
+				5677E2A0292833C90094E051 /* sample_run_1.gpx */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -268,7 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				569F7C6B2919F692000A006B /* Preview Assets.xcassets in Resources */,
-				5677E29B2927D9B80094E051 /* sample_run_1.gpx in Resources */,
+				5677E2A1292833C90094E051 /* sample_run_1.gpx in Resources */,
 				569F7C682919F691000A006B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5677E2A2292833C90094E051 /* sample_run_1.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +287,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5677E2A3292833C90094E051 /* sample_run_1.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

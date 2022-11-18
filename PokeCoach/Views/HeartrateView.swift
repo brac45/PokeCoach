@@ -11,9 +11,13 @@ import Charts
 struct HeartrateView: View {
     @ObservedObject var hrData: HeartrateModelData
     
+    @State private var speed = 50.0
+    @State private var isEditing = false
+    
     var body: some View {
         VStack {
             Text(hrData.activityName)
+            
             Chart {
                 ForEach(hrData.data) {
                     LineMark(
@@ -22,7 +26,17 @@ struct HeartrateView: View {
                     )
                 }
             }
+            .padding()
+            
+            Slider(
+                value: $speed,
+                in: 0...100,
+                onEditingChanged: { editing in
+                    isEditing = editing
+                }
+            )
         }
+        .padding()
     }
 }
 
