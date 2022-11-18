@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5677E29B2927D9B80094E051 /* sample_run_1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5677E29A2927D9B80094E051 /* sample_run_1.gpx */; };
 		569C19B0291EC9200041DC11 /* ChartNavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C19AF291EC9200041DC11 /* ChartNavigatorView.swift */; };
-		569C19B5291ED35C0041DC11 /* HeartrateDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C19B4291ED35C0041DC11 /* HeartrateDataStruct.swift */; };
+		569C19B5291ED35C0041DC11 /* HeartrateModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C19B4291ED35C0041DC11 /* HeartrateModelData.swift */; };
 		569F7C642919F68F000A006B /* PokeCoachApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C632919F68F000A006B /* PokeCoachApp.swift */; };
 		569F7C662919F68F000A006B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C652919F68F000A006B /* ContentView.swift */; };
 		569F7C682919F691000A006B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 569F7C672919F691000A006B /* Assets.xcassets */; };
@@ -37,8 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5677E29A2927D9B80094E051 /* sample_run_1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = sample_run_1.gpx; path = ../../../../../Downloads/sample_run_1.gpx; sourceTree = "<group>"; };
 		569C19AF291EC9200041DC11 /* ChartNavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartNavigatorView.swift; sourceTree = "<group>"; };
-		569C19B4291ED35C0041DC11 /* HeartrateDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartrateDataStruct.swift; sourceTree = "<group>"; };
+		569C19B4291ED35C0041DC11 /* HeartrateModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartrateModelData.swift; sourceTree = "<group>"; };
 		569F7C602919F68F000A006B /* PokeCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569F7C632919F68F000A006B /* PokeCoachApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCoachApp.swift; sourceTree = "<group>"; };
 		569F7C652919F68F000A006B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		561A032F292707B600C42C5A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5677E29A2927D9B80094E051 /* sample_run_1.gpx */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		569C19B1291ED1A20041DC11 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +120,7 @@
 		569F7C622919F68F000A006B /* PokeCoach */ = {
 			isa = PBXGroup;
 			children = (
+				561A032F292707B600C42C5A /* Data */,
 				569C19B1291ED1A20041DC11 /* Views */,
 				569F7C902919F8D9000A006B /* Model */,
 				569F7C632919F68F000A006B /* PokeCoachApp.swift */,
@@ -147,7 +158,7 @@
 		569F7C902919F8D9000A006B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				569C19B4291ED35C0041DC11 /* HeartrateDataStruct.swift */,
+				569C19B4291ED35C0041DC11 /* HeartrateModelData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -257,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				569F7C6B2919F692000A006B /* Preview Assets.xcassets in Resources */,
+				5677E29B2927D9B80094E051 /* sample_run_1.gpx in Resources */,
 				569F7C682919F691000A006B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,7 +297,7 @@
 				569F7C8F2919F7E2000A006B /* HeartrateView.swift in Sources */,
 				569F7C662919F68F000A006B /* ContentView.swift in Sources */,
 				569F7C642919F68F000A006B /* PokeCoachApp.swift in Sources */,
-				569C19B5291ED35C0041DC11 /* HeartrateDataStruct.swift in Sources */,
+				569C19B5291ED35C0041DC11 /* HeartrateModelData.swift in Sources */,
 				569C19B0291EC9200041DC11 /* ChartNavigatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

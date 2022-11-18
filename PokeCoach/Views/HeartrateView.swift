@@ -9,18 +9,17 @@ import SwiftUI
 import Charts
 
 struct HeartrateView: View {
+    @StateObject private var hrData = 
     var body: some View {
         VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            HeartrateViewChart()
         }
     }
 }
 
-struct HeartrateViewChart {
+struct HeartrateViewChart: View {
     var body: some View {
-        Chart {
-            
-        }
+        Text("Heartrate chart should be here")
     }
 }
 

@@ -16,14 +16,22 @@ final class PokeCoachTests: XCTestCase {
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        ActivityDataManager.shared.wipeAllData()
     }
 
-    func testExample() throws {
+    func testDummyDataFill() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         // Any test you write for XCTest can be annotated as throws and async.
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        ActivityDataManager.shared.fillWithDummyData()
+        
+        XCTAssertEqual(ActivityDataManager.shared.heartrateData.count, 5)
+    }
+    
+    func testDummyDataWipe() throws {
+        XCTAssertEqual(ActivityDataManager.shared.heartrateData.count, 0)
     }
 
     func testPerformanceExample() throws {
