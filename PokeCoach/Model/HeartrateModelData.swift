@@ -8,14 +8,16 @@
 import SwiftUI
 
 class HeartrateModelData: ObservableObject {
-    static let shared = HeartrateModelData()
-    
     @Published var data: [HeartrateDataPoint]
+    @Published var activityName: String
     
-    private init() {
+    init() {
         self.data = []
+        self.activityName = "Morning Run"
+        
+        self.fillWithDummyData()
     }
-    
+
     func wipeAllData() {
         self.data.removeAll()
     }

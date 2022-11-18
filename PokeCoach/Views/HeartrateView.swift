@@ -9,22 +9,20 @@ import SwiftUI
 import Charts
 
 struct HeartrateView: View {
-    @StateObject private var hrData = 
+    @ObservedObject var hrData: HeartrateModelData
+    
     var body: some View {
         VStack {
-            HeartrateViewChart()
+            Text(hrData.activityName)
+            Chart {
+                ForEach(hrData.data) {
+                    LineMark(
+                        x: .value("Time", $0.ts, unit: .second),
+                        y: .value("Heartrate", $0.hr)
+                    )
+                }
+            }
         }
     }
 }
 
-struct HeartrateViewChart: View {
-    var body: some View {
-        Text("Heartrate chart should be here")
-    }
-}
-
-struct HeartrateView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeartrateView()
-    }
-}

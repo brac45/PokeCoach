@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5677E29B2927D9B80094E051 /* sample_run_1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5677E29A2927D9B80094E051 /* sample_run_1.gpx */; };
-		569C19B0291EC9200041DC11 /* ChartNavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C19AF291EC9200041DC11 /* ChartNavigatorView.swift */; };
+		5677E29F292810800094E051 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677E29E292810800094E051 /* SettingsView.swift */; };
 		569C19B5291ED35C0041DC11 /* HeartrateModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C19B4291ED35C0041DC11 /* HeartrateModelData.swift */; };
 		569F7C642919F68F000A006B /* PokeCoachApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C632919F68F000A006B /* PokeCoachApp.swift */; };
 		569F7C662919F68F000A006B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C652919F68F000A006B /* ContentView.swift */; };
@@ -39,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		5677E29A2927D9B80094E051 /* sample_run_1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = sample_run_1.gpx; path = ../../../../../Downloads/sample_run_1.gpx; sourceTree = "<group>"; };
-		569C19AF291EC9200041DC11 /* ChartNavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartNavigatorView.swift; sourceTree = "<group>"; };
+		5677E29E292810800094E051 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		569C19B4291ED35C0041DC11 /* HeartrateModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartrateModelData.swift; sourceTree = "<group>"; };
 		569F7C602919F68F000A006B /* PokeCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569F7C632919F68F000A006B /* PokeCoachApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCoachApp.swift; sourceTree = "<group>"; };
@@ -91,8 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				569F7C652919F68F000A006B /* ContentView.swift */,
-				569C19AF291EC9200041DC11 /* ChartNavigatorView.swift */,
 				569F7C8E2919F7E2000A006B /* HeartrateView.swift */,
+				5677E29E292810800094E051 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -294,11 +294,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5677E29F292810800094E051 /* SettingsView.swift in Sources */,
 				569F7C8F2919F7E2000A006B /* HeartrateView.swift in Sources */,
 				569F7C662919F68F000A006B /* ContentView.swift in Sources */,
 				569F7C642919F68F000A006B /* PokeCoachApp.swift in Sources */,
 				569C19B5291ED35C0041DC11 /* HeartrateModelData.swift in Sources */,
-				569C19B0291EC9200041DC11 /* ChartNavigatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
