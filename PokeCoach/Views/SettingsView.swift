@@ -13,12 +13,12 @@ struct SettingsView: View {
     
     func loadDummyData() {
         debugText.append("Loading dummy data..\n")
-        hrData.fillWithDummyData()
+        hrData.clearAndfillWithDummyData()
     }
     
     func loadGPXRunData1() {
-        debugText.append("Loading data from \(SampleData.Run1.rawValue)")
-        hrData.ClearAndfillWithGPXData(filename: SampleData.Run1)
+        debugText.append("Loading data from \(SampleData.Run1.rawValue)\n")
+        hrData.clearAndfillWithGPXData(filename: SampleData.Run1)
     }
     
     func clearData() {
@@ -27,8 +27,6 @@ struct SettingsView: View {
     }
     
     var body: some View {
-        //let testStr = HeartrateModelData.getStringPathForGPXData()
-        
         VStack {
             Menu("Load Data") {
                 Button("Dummy Data", action: loadDummyData)

@@ -12,6 +12,10 @@ class HeartrateModelData: NSObject, ObservableObject, XMLParserDelegate {
     @Published var datapoints: [HeartrateDataPoint]
     @Published var activityName: String
     
+    // Published chart attributes
+    @Published var yMax: Int
+    @Published var yMin: Int
+    
     // Constants
     private let NO_ACTIVITIES: String = "No Activity Selected"
     
@@ -37,16 +41,33 @@ class HeartrateModelData: NSObject, ObservableObject, XMLParserDelegate {
         self.datapoints = []
         self.activityName = NO_ACTIVITIES
         self.currentTrackPoint = TrackPointState()
+        self.yMax = 200
+        self.yMin = 80
         
         super.init()
+    }
+    
+    func setChartAttributesWithCurrentData() {
+        if let maxPoint = self.datapoints.max(by: {$0.hr < $1.hr}) {
+            yMax = ((maxPoint.hr/10)*10)+10
+            print(yMax)
+        }
+        if let minPoint = self.datapoints.min(by: {$0.hr < $1.hr}) {
+            yMin = ((minPoint.hr/10)*10)-10
+            print(yMin)
+        }
     }
 
     func clearAllData() {
         self.datapoints.removeAll()
         self.activityName = NO_ACTIVITIES
+        self.yMax = 200
+        self.yMin = 80
     }
     
-    func fillWithDummyData() {
+    func clearAndfillWithDummyData() {
+        self.clearAllData()
+        
         self.activityName = "DUMMY DATA"
         self.datapoints = [
             .init(hr: 100, isoDateString: "2022-11-17T11:27:48.000Z"),
@@ -57,7 +78,7 @@ class HeartrateModelData: NSObject, ObservableObject, XMLParserDelegate {
         ]
     }
     
-    func ClearAndfillWithGPXData(filename: SampleData) {
+    func clearAndfillWithGPXData(filename: SampleData) {
         self.clearAllData()
         
         /// Read file
@@ -67,10 +88,12 @@ class HeartrateModelData: NSObject, ObservableObject, XMLParserDelegate {
                 print("XMLParser created, parsing...")
                 parser.delegate = self
                 parser.parse()
+                self.activityName = filename.rawValue
+                self.setChartAttributesWithCurrentData()
             }
         } else {
             print("GPX Parsing Error, reverting to dummy data..")
-            self.fillWithDummyData()
+            self.clearAndfillWithDummyData()
         }
     }
     

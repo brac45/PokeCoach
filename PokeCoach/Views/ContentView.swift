@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var hrData = HeartrateModelData()
+    @StateObject var hrData = HeartrateModelData()
+    @StateObject var appSettings = AppSettings()
 
     var body: some View {
         TabView() {

@@ -14,19 +14,20 @@ struct HeartrateView: View {
     @State private var speed = 50.0
     @State private var isEditing = false
     
+    
+    
     var body: some View {
         VStack {
             Text(hrData.activityName)
             
-            Chart {
-                ForEach(hrData.datapoints) {
-                    LineMark(
-                        x: .value("Time", $0.ts, unit: .second),
-                        y: .value("Heartrate", $0.hr)
-                    )
-                }
+            Chart(hrData.datapoints) {
+                LineMark(
+                    x: .value("Time", $0.ts, unit: .second),
+                    y: .value("Heartrate", $0.hr)
+                )
             }
             .padding()
+            .chartYScale(domain: hrData.yMin...hrData.yMax)
             
             Slider(
                 value: $speed,
@@ -35,6 +36,8 @@ struct HeartrateView: View {
                     isEditing = editing
                 }
             )
+            
+            Text("\(speed)")
         }
         .padding()
     }

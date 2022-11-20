@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56642C5C292AD7DE002DB652 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56642C5B292AD7DE002DB652 /* AppSettings.swift */; };
 		5677E29F292810800094E051 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677E29E292810800094E051 /* SettingsView.swift */; };
 		5677E2A1292833C90094E051 /* sample_run_1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5677E2A0292833C90094E051 /* sample_run_1.gpx */; };
 		5677E2A2292833C90094E051 /* sample_run_1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5677E2A0292833C90094E051 /* sample_run_1.gpx */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		56642C5B292AD7DE002DB652 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		5677E29E292810800094E051 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5677E2A0292833C90094E051 /* sample_run_1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample_run_1.gpx; sourceTree = "<group>"; };
 		569C19B4291ED35C0041DC11 /* HeartrateModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartrateModelData.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				569F7C632919F68F000A006B /* PokeCoachApp.swift */,
 				569F7C672919F691000A006B /* Assets.xcassets */,
 				569F7C692919F692000A006B /* Preview Content */,
+				56642C5B292AD7DE002DB652 /* AppSettings.swift */,
 			);
 			path = PokeCoach;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				5677E29F292810800094E051 /* SettingsView.swift in Sources */,
 				569F7C8F2919F7E2000A006B /* HeartrateView.swift in Sources */,
 				569F7C662919F68F000A006B /* ContentView.swift in Sources */,
+				56642C5C292AD7DE002DB652 /* AppSettings.swift in Sources */,
 				569F7C642919F68F000A006B /* PokeCoachApp.swift in Sources */,
 				569C19B5291ED35C0041DC11 /* HeartrateModelData.swift in Sources */,
 			);
