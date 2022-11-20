@@ -12,6 +12,7 @@ final class PokeCoachTests: XCTestCase {
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
     
     override func tearDownWithError() throws {
@@ -19,11 +20,10 @@ final class PokeCoachTests: XCTestCase {
     }
     
     func testFileRead() throws {
-        if let path = Bundle.main.path(forResource: "sample_run_1", ofType: "gpx") {
-            print(path)
-        } else {
-            print("Not found")
-        }
+        var testing = HeartrateModelData()
+        testing.fillWithGPXData(filename: SampleData.Run1)
+        
+        print("break")
     }
     
     func testPerformanceExample() throws {

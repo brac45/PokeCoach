@@ -17,7 +17,7 @@ struct ContentView: View {
                     Label("Chart", systemImage: "chart.xyaxis.line")
                 }
             
-            SettingsTab()
+            SettingsTab(hrData: hrData)
                 .tabItem {
                     Label("Settings", systemImage: "gearshape")
                 }
@@ -42,9 +42,11 @@ struct DataViewTab: View {
 }
 
 struct SettingsTab: View {
+    @ObservedObject var hrData: HeartrateModelData
+    
     var body: some View {
         VStack {
-            SettingsView()
+            SettingsView(hrData: hrData)
         }
     }
 }

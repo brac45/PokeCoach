@@ -19,7 +19,7 @@ struct HeartrateView: View {
             Text(hrData.activityName)
             
             Chart {
-                ForEach(hrData.data) {
+                ForEach(hrData.datapoints) {
                     LineMark(
                         x: .value("Time", $0.ts, unit: .second),
                         y: .value("Heartrate", $0.hr)
