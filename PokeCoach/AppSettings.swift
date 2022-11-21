@@ -5,7 +5,7 @@
 //  Created by Jong Ho Lee on 11/20/22.
 //
 
-import Foundation
+import SwiftUI
 
 class AppSettings: ObservableObject {
     @Published var debugLog: String = ""

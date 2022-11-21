@@ -11,10 +11,15 @@ import Charts
 struct HeartrateView: View {
     @ObservedObject var hrData: HeartrateModelData
     
-    @State private var speed = 50.0
+    @State private var chartIdx = 0.0
     @State private var isEditing = false
     
-    
+    func dateToTimeString() -> String {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm:ss"
+        
+        return timeFormatter.string(from: hrData.datapoints[Int(chartIdx)].ts)
+    }
     
     var body: some View {
         VStack {
@@ -25,19 +30,19 @@ struct HeartrateView: View {
                     x: .value("Time", $0.ts, unit: .second),
                     y: .value("Heartrate", $0.hr)
                 )
+                RuleMark(x: .value("Current", hrData.datapoints[Int(chartIdx)].ts))
+                    .foregroundStyle(.red)
             }
             .padding()
             .chartYScale(domain: hrData.yMin...hrData.yMax)
             
             Slider(
-                value: $speed,
-                in: 0...100,
-                onEditingChanged: { editing in
-                    isEditing = editing
-                }
+                value: $chartIdx,
+                in: hrData.xMin...hrData.xMax,
+                step: 1
             )
             
-            Text("\(speed)")
+            Text("Time: \(dateToTimeString())")
         }
         .padding()
     }

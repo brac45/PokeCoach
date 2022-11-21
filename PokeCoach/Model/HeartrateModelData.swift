@@ -16,6 +16,9 @@ class HeartrateModelData: NSObject, ObservableObject, XMLParserDelegate {
     @Published var yMax: Int
     @Published var yMin: Int
     
+    @Published var xMax: Double
+    @Published var xMin: Double
+    
     // Constants
     private let NO_ACTIVITIES: String = "No Activity Selected"
     
@@ -41,10 +44,16 @@ class HeartrateModelData: NSObject, ObservableObject, XMLParserDelegate {
         self.datapoints = []
         self.activityName = NO_ACTIVITIES
         self.currentTrackPoint = TrackPointState()
+        
         self.yMax = 200
         self.yMin = 80
         
+        self.xMax = 100.0
+        self.xMin = 0.0
+        
         super.init()
+        
+        self.clearAndfillWithGPXData(filename: SampleData.Run1)
     }
     
     func setChartAttributesWithCurrentData() {
@@ -56,6 +65,8 @@ class HeartrateModelData: NSObject, ObservableObject, XMLParserDelegate {
             yMin = ((minPoint.hr/10)*10)-10
             print(yMin)
         }
+        self.xMin = 0.0
+        self.xMax = Double(self.datapoints.count - 1)
     }
 
     func clearAllData() {
