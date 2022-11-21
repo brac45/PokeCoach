@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		56642C5C292AD7DE002DB652 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56642C5B292AD7DE002DB652 /* AppSettings.swift */; };
 		5677E29F292810800094E051 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677E29E292810800094E051 /* SettingsView.swift */; };
 		5677E2A1292833C90094E051 /* sample_run_1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5677E2A0292833C90094E051 /* sample_run_1.gpx */; };
 		5677E2A2292833C90094E051 /* sample_run_1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5677E2A0292833C90094E051 /* sample_run_1.gpx */; };
@@ -21,6 +20,7 @@
 		569F7C7F2919F692000A006B /* PokeCoachUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C7E2919F692000A006B /* PokeCoachUITests.swift */; };
 		569F7C812919F692000A006B /* PokeCoachUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C802919F692000A006B /* PokeCoachUITestsLaunchTests.swift */; };
 		569F7C8F2919F7E2000A006B /* HeartrateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C8E2919F7E2000A006B /* HeartrateView.swift */; };
+		56D59DCC292B2FFB00F7F8BF /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D59DCB292B2FFB00F7F8BF /* HapticManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		56642C5B292AD7DE002DB652 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		5677E29E292810800094E051 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5677E2A0292833C90094E051 /* sample_run_1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample_run_1.gpx; sourceTree = "<group>"; };
 		569C19B4291ED35C0041DC11 /* HeartrateModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartrateModelData.swift; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		569F7C7E2919F692000A006B /* PokeCoachUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCoachUITests.swift; sourceTree = "<group>"; };
 		569F7C802919F692000A006B /* PokeCoachUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCoachUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		569F7C8E2919F7E2000A006B /* HeartrateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartrateView.swift; sourceTree = "<group>"; };
+		56D59DCB292B2FFB00F7F8BF /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,13 +124,13 @@
 		569F7C622919F68F000A006B /* PokeCoach */ = {
 			isa = PBXGroup;
 			children = (
+				56D59DCA292B2FE400F7F8BF /* Feedback */,
 				561A032F292707B600C42C5A /* Data */,
 				569C19B1291ED1A20041DC11 /* Views */,
 				569F7C902919F8D9000A006B /* Model */,
 				569F7C632919F68F000A006B /* PokeCoachApp.swift */,
 				569F7C672919F691000A006B /* Assets.xcassets */,
 				569F7C692919F692000A006B /* Preview Content */,
-				56642C5B292AD7DE002DB652 /* AppSettings.swift */,
 			);
 			path = PokeCoach;
 			sourceTree = "<group>";
@@ -166,6 +166,14 @@
 				569C19B4291ED35C0041DC11 /* HeartrateModelData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		56D59DCA292B2FE400F7F8BF /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				56D59DCB292B2FFB00F7F8BF /* HapticManager.swift */,
+			);
+			path = Feedback;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,8 +311,8 @@
 			files = (
 				5677E29F292810800094E051 /* SettingsView.swift in Sources */,
 				569F7C8F2919F7E2000A006B /* HeartrateView.swift in Sources */,
+				56D59DCC292B2FFB00F7F8BF /* HapticManager.swift in Sources */,
 				569F7C662919F68F000A006B /* ContentView.swift in Sources */,
-				56642C5C292AD7DE002DB652 /* AppSettings.swift in Sources */,
 				569F7C642919F68F000A006B /* PokeCoachApp.swift in Sources */,
 				569C19B5291ED35C0041DC11 /* HeartrateModelData.swift in Sources */,
 			);

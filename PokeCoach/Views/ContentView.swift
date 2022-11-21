@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var hrData = HeartrateModelData()
-    @StateObject var appSettings = AppSettings()
 
     var body: some View {
         TabView() {

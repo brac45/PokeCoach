@@ -87,6 +87,7 @@ class HeartrateModelData: NSObject, ObservableObject, XMLParserDelegate {
             .init(hr: 142, isoDateString: "2022-11-17T11:30:27.000Z"),
             .init(hr: 121, isoDateString: "2022-11-17T11:41:35.000Z")
         ]
+        self.setChartAttributesWithCurrentData()
     }
     
     func clearAndfillWithGPXData(filename: SampleData) {
@@ -99,7 +100,9 @@ class HeartrateModelData: NSObject, ObservableObject, XMLParserDelegate {
                 print("XMLParser created, parsing...")
                 parser.delegate = self
                 parser.parse()
-                self.activityName = filename.rawValue
+                if filename == SampleData.Run1 {
+                    self.activityName = "Morning Run"
+                }
                 self.setChartAttributesWithCurrentData()
             }
         } else {

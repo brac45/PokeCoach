@@ -7,12 +7,16 @@
 
 import SwiftUI
 import Charts
+import CoreHaptics
 
 struct HeartrateView: View {
     @ObservedObject var hrData: HeartrateModelData
     
     @State private var chartIdx = 0.0
-    @State private var isEditing = false
+    
+    @StateObject var hapticManager = HapticManager()
+    
+    var engine: CHHapticEngine!
     
     func dateToTimeString() -> String {
         let timeFormatter = DateFormatter()
@@ -39,12 +43,34 @@ struct HeartrateView: View {
             Slider(
                 value: $chartIdx,
                 in: hrData.xMin...hrData.xMax,
-                step: 1
+                step: 1,
+                onEditingChanged: { editing in
+                    print(editing)
+                }
             )
             
-            Text("Time: \(dateToTimeString())")
+            HStack {
+                Spacer()
+                Label("Time: \(dateToTimeString())", systemImage: "stopwatch")
+                Spacer()
+                Label("Heartrate: \(hrData.datapoints[Int(chartIdx)].hr)", systemImage: "heart")
+                Spacer()
+            }
+            .symbolRenderingMode(.multicolor)
         }
         .padding()
+        .onAppear {
+            print("HeartrateView Appeared!")
+            if hapticManager.supportsHaptics {
+                print("Current device supports haptics")
+                
+            } else {
+                print("No haptic engine")
+            }
+        }
+        .onDisappear {
+            print("HeartrateView Disappeared...")
+        }
     }
 }
 
