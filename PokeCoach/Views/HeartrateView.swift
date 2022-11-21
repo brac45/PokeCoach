@@ -12,11 +12,19 @@ import CoreHaptics
 struct HeartrateView: View {
     @ObservedObject var hrData: HeartrateModelData
     
-    @State private var chartIdx = 0.0
+    @State private var chartIdx: Double = 0.0
     
     @StateObject var hapticManager = HapticManager()
     
-    var engine: CHHapticEngine!
+    func onIdxChange() {
+        print("Idx change: \(chartIdx)")
+        
+        let curVal = Float(hrData.datapoints[Int(chartIdx)].hr)
+        let refMax = Float(hrData.yMax)
+        let refMin = Float(hrData.yMin)
+        
+        hapticManager.updateContinuousHapticParameters(refMax: refMax, refMin: refMin, curVal: curVal)
+    }
     
     func dateToTimeString() -> String {
         let timeFormatter = DateFormatter()
@@ -45,9 +53,13 @@ struct HeartrateView: View {
                 in: hrData.xMin...hrData.xMax,
                 step: 1,
                 onEditingChanged: { editing in
-                    print(editing)
+                    hapticManager.doHapticFeedback = editing
+                    hapticManager.playContinuousPattern()
                 }
             )
+            .onChange(of: chartIdx) { value in
+                onIdxChange()
+            }
             
             HStack {
                 Spacer()
@@ -59,18 +71,5 @@ struct HeartrateView: View {
             .symbolRenderingMode(.multicolor)
         }
         .padding()
-        .onAppear {
-            print("HeartrateView Appeared!")
-            if hapticManager.supportsHaptics {
-                print("Current device supports haptics")
-                
-            } else {
-                print("No haptic engine")
-            }
-        }
-        .onDisappear {
-            print("HeartrateView Disappeared...")
-        }
     }
 }
-
