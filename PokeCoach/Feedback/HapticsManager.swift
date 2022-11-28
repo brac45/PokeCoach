@@ -9,21 +9,35 @@ import SwiftUI
 import CoreHaptics
 import Combine
 
-class HapticManager: ObservableObject {
+class HapticsManager: ObservableObject {
     @Published var supportsHaptics: Bool
     @Published var doHapticFeedback: Bool
+    @Published var doTransientInstead: Bool
     
     var toggleSink: AnyCancellable?
     
     var engine: CHHapticEngine!
     private var continuousPlayer: CHHapticAdvancedPatternPlayer!
     
+    /// Continuous member values
     private let initialIntensity: Float = 0.5
     private let initialSharpness: Float = 0.5
+    
+    /// Transient member values
+    private let transientIntensity: Float = 1
+    private let transientSharpness: Float = 1
+    private let transientInitialDelay: Int = 100
+    private var beatsPerMinute: Int
+    private let MIN_BPM: Int = 20
+    private let MAX_BPM: Int = 400
+    
+    private var transientTimer: DispatchSourceTimer?
     
     init() {
         self.supportsHaptics = CHHapticEngine.capabilitiesForHardware().supportsHaptics
         self.doHapticFeedback = false
+        self.doTransientInstead = false
+        self.beatsPerMinute = MIN_BPM
         
         // TODO: Remove in production
         toggleSink = $doHapticFeedback.sink { v in
@@ -129,18 +143,22 @@ class HapticManager: ObservableObject {
         }
     }
     
+    func updateTransientHapticInterval(bpm: Int) {
+        if bpm < MIN_BPM {
+            self.beatsPerMinute = MIN_BPM
+        } else if bpm > MAX_BPM {
+            self.beatsPerMinute = MAX_BPM
+        } else {
+            self.beatsPerMinute = bpm
+        }
+    }
+    
     func updateContinuousHapticParameters(refMax: Float, refMin: Float, curVal: Float) {
         // Normalize intensity based on current data point
         let dynamicIntensity = (curVal - refMin)/(refMax - refMin)
         
         // Normalize sharpness based on current data point
         let dynamicSharpness = (curVal - refMin)/(refMax - refMin)
-        
-        // The perceived intensity value multiplies the original event parameter intensity by the dynamic parameter's value.
-        //let perceivedIntensity = initialIntensity * dynamicIntensity
-        
-        // The perceived sharpness value adds the dynamic parameter to the original pattern's event parameter sharpness.
-        //let perceivedSharpness = initialSharpness + dynamicSharpness
         
         if supportsHaptics {
             // Create dynamic parameters for the updated intensity & sharpness.
@@ -187,6 +205,74 @@ class HapticManager: ObservableObject {
                     print("Error stopping the continuous haptic player: \(error)")
                 }
             }
+        }
+    }
+    
+    private func playHapticTransient() {
+        // Abort if the device doesn't support haptics.
+        if !supportsHaptics {
+            return
+        }
+        
+        // Create an intensity parameter:
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity,
+                                               value: transientIntensity)
+        
+        // Create a sharpness parameter:
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness,
+                                               value: transientSharpness)
+        
+        // Create a continuous event with a long duration from the parameters.
+        let transientEvent = CHHapticEvent(eventType: .hapticTransient,
+                                            parameters: [intensity, sharpness],
+                                            relativeTime: 0)
+        
+        do {
+            print("Transient Intensity: \(intensity.value)")
+            print("Transient Sharpness: \(sharpness.value)")
+            // Create a pattern from the transient haptic event.
+            let pattern = try CHHapticPattern(events: [transientEvent], parameters: [])
+            
+            // Create a player from the continuous haptic pattern.
+            print("Making transient player..")
+            let transientPlayer = try engine.makePlayer(with: pattern)
+            try transientPlayer.start(atTime: CHHapticTimeImmediate) // Play now.
+            print("Making transient player.. Done!")
+        } catch let error {
+            print("Pattern Player Creation Error: \(error)")
+        }
+    }
+    
+    func playTransientPattern() {
+        switch self.doHapticFeedback {
+        case true:
+            // Create a timer to play subsequent transient patterns in succession.
+            transientTimer?.cancel()
+            transientTimer = DispatchSource.makeTimerSource(queue: .main)
+            guard let timer = transientTimer else {
+                print("Something happened")
+                return
+            }
+            
+            // TODO: Calculate repeat delay with bpm
+            let repeatingDelay: Int = Int(60000/self.beatsPerMinute)
+            print("Scheduling timer")
+            print("RepeatingDelay(ms): \(repeatingDelay)")
+            timer.schedule(deadline: .now() + .milliseconds(self.transientInitialDelay), repeating: .milliseconds(repeatingDelay))
+            timer.setEventHandler() { [unowned self] in
+                // Recalibrate sharpness and intensity each time the timer fires.
+                //let newLocation = press.location(in: self.transientPalette)
+                //let (sharpness, intensity) = self.sharpnessAndIntensityAt(location: newLocation, in: self.transientPalette)
+                self.playHapticTransient()
+            }
+            
+            // Activate the timer.
+            timer.resume()
+            
+        case false:
+            // Stop the transient timer.
+            transientTimer?.cancel()
+            transientTimer = nil
         }
     }
 }

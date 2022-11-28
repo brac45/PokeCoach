@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject var hrData: HeartrateModelData
+    @ObservedObject var hapticManager: HapticsManager
     @State var debugText: String = "Multiline Debug Text\n"
     
     func loadDummyData() {
@@ -28,11 +29,13 @@ struct SettingsView: View {
     
     var body: some View {
         VStack {
+            Text("Developer Settings").font(.title)
             Menu("Load Data") {
                 Button("Dummy Data", action: loadDummyData)
                 Button("Run Data 1", action: loadGPXRunData1)
                 Button("Clear Data", role: .destructive, action: clearData)
             }
+            Toggle("Toggle Transient", isOn: $hapticManager.doTransientInstead)
             TextEditor(text: $debugText)
         }
         .padding()

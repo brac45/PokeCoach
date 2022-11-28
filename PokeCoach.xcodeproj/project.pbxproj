@@ -20,7 +20,7 @@
 		569F7C7F2919F692000A006B /* PokeCoachUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C7E2919F692000A006B /* PokeCoachUITests.swift */; };
 		569F7C812919F692000A006B /* PokeCoachUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C802919F692000A006B /* PokeCoachUITestsLaunchTests.swift */; };
 		569F7C8F2919F7E2000A006B /* HeartrateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F7C8E2919F7E2000A006B /* HeartrateView.swift */; };
-		56D59DCC292B2FFB00F7F8BF /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D59DCB292B2FFB00F7F8BF /* HapticManager.swift */; };
+		56D59DCC292B2FFB00F7F8BF /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D59DCB292B2FFB00F7F8BF /* HapticsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,7 @@
 		569F7C7E2919F692000A006B /* PokeCoachUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCoachUITests.swift; sourceTree = "<group>"; };
 		569F7C802919F692000A006B /* PokeCoachUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCoachUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		569F7C8E2919F7E2000A006B /* HeartrateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartrateView.swift; sourceTree = "<group>"; };
-		56D59DCB292B2FFB00F7F8BF /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		56D59DCB292B2FFB00F7F8BF /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +171,7 @@
 		56D59DCA292B2FE400F7F8BF /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
-				56D59DCB292B2FFB00F7F8BF /* HapticManager.swift */,
+				56D59DCB292B2FFB00F7F8BF /* HapticsManager.swift */,
 			);
 			path = Feedback;
 			sourceTree = "<group>";
@@ -311,7 +311,7 @@
 			files = (
 				5677E29F292810800094E051 /* SettingsView.swift in Sources */,
 				569F7C8F2919F7E2000A006B /* HeartrateView.swift in Sources */,
-				56D59DCC292B2FFB00F7F8BF /* HapticManager.swift in Sources */,
+				56D59DCC292B2FFB00F7F8BF /* HapticsManager.swift in Sources */,
 				569F7C662919F68F000A006B /* ContentView.swift in Sources */,
 				569F7C642919F68F000A006B /* PokeCoachApp.swift in Sources */,
 				569C19B5291ED35C0041DC11 /* HeartrateModelData.swift in Sources */,
