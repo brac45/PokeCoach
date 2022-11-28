@@ -30,12 +30,27 @@ struct HeartrateView: View {
                 return
             }
             
+            var sum = 0
+            var count = 0
+            for i in Int(minIdxForSpeech)...Int(maxIdxForSpeech) {
+                sum += hrData.datapoints[Int(i)].hr
+                count += 1
+            }
+            let rangedMeanHr = Double(sum) / Double(count)
+            let relativeChange = Int(((rangedMeanHr - hrData.meanHr) / hrData.meanHr) * 100)
+            
             // TODO: Build string here
-            let summary = "From the range you explored, "
+            let summary = """
+                    From the range you explored,
+                    your minimum heart rate is \(minHr) beats per minute,
+                    and your maximum heart rate is \(maxHr) beats per minute.
+                    Your averate heart rate in this range is \(Int(rangedMeanHr)) beats per minute.
+                    This is a \(relativeChange) percent change from the overall average of your run, where
+                    your overall average was \(Int(hrData.meanHr))
+                    """
             
             let utterance = AVSpeechUtterance(string: summary)
             utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
-            utterance.rate = 1
             
             print("Playing \(summary)")
             //let synthesizer = AVSpeechSynthesizer()
@@ -48,12 +63,21 @@ struct HeartrateView: View {
         
         if hapticManager.doHapticFeedback {
             if chartIdx < minIdxForSpeech {
-                print("SET min: \(minIdxForSpeech), max: \(maxIdxForSpeech)")
+                print("SET min: \(minIdxForSpeech)")
                 minIdxForSpeech = chartIdx
             }
             if chartIdx > maxIdxForSpeech {
-                print("SET min: \(minIdxForSpeech), max: \(maxIdxForSpeech)")
+                print("SET max: \(maxIdxForSpeech)")
                 maxIdxForSpeech = chartIdx
+            }
+            
+            if hrData.datapoints[Int(chartIdx)].hr < minHr {
+                print("SET minhr: \(minHr)")
+                minHr = hrData.datapoints[Int(chartIdx)].hr
+            }
+            if hrData.datapoints[Int(chartIdx)].hr > maxHr {
+                print("SET maxhr: \(maxHr)")
+                maxHr = hrData.datapoints[Int(chartIdx)].hr
             }
             
             if hapticManager.doTransientInstead {
@@ -70,7 +94,10 @@ struct HeartrateView: View {
         } else {
             minIdxForSpeech = Double.infinity
             maxIdxForSpeech = -1.0
+            minHr = 9999
+            maxHr = -1
             print("RESET min: \(minIdxForSpeech), max: \(maxIdxForSpeech)")
+            print("RESET minHr: \(minHr), maxHr: \(maxHr)")
         }
     }
     

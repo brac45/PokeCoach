@@ -19,6 +19,9 @@ class HeartrateModelData: NSObject, ObservableObject, XMLParserDelegate {
     @Published var xMax: Double
     @Published var xMin: Double
     
+    // Public variables
+    var meanHr: Double
+    
     // Constants
     private let NO_ACTIVITIES: String = "No Activity Selected"
     
@@ -50,6 +53,7 @@ class HeartrateModelData: NSObject, ObservableObject, XMLParserDelegate {
         
         self.xMax = 100.0
         self.xMin = 0.0
+        self.meanHr = 0.0
         
         super.init()
         
@@ -67,6 +71,12 @@ class HeartrateModelData: NSObject, ObservableObject, XMLParserDelegate {
         }
         self.xMin = 0.0
         self.xMax = Double(self.datapoints.count - 1)
+        
+        var sum = 0
+        for point_t in self.datapoints {
+            sum += point_t.hr
+        }
+        self.meanHr = Double(sum) / Double(self.datapoints.count)
     }
 
     func clearAllData() {
