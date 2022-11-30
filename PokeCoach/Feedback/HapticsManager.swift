@@ -27,9 +27,9 @@ class HapticsManager: ObservableObject {
     private let transientIntensity: Float = 1
     private let transientSharpness: Float = 1
     private let transientInitialDelay: Int = 100
-    private var beatsPerMinute: Int
+    private var relativeBPM: Int
     private let MIN_BPM: Int = 20
-    private let MAX_BPM: Int = 400
+    private let MAX_BPM: Int = 300
     
     private var transientTimer: DispatchSourceTimer?
     
@@ -37,7 +37,7 @@ class HapticsManager: ObservableObject {
         self.supportsHaptics = CHHapticEngine.capabilitiesForHardware().supportsHaptics
         self.doHapticFeedback = false
         self.doTransientInstead = false
-        self.beatsPerMinute = MIN_BPM
+        self.relativeBPM = MIN_BPM
         
         // TODO: Remove in production
         toggleSink = $doHapticFeedback.sink { v in
@@ -140,16 +140,23 @@ class HapticsManager: ObservableObject {
         
         continuousPlayer.completionHandler = { _ in
             print("Completion Handler Called")
+            DispatchQueue.main.async {
+                // Restore original color.
+                self.doHapticFeedback = false
+            }
         }
     }
     
-    func updateTransientHapticInterval(bpm: Int) {
-        if bpm < MIN_BPM {
-            self.beatsPerMinute = MIN_BPM
-        } else if bpm > MAX_BPM {
-            self.beatsPerMinute = MAX_BPM
+    func updateTransientHapticInterval(refMax: Int, refMin: Int, curVal: Int) {
+        // Convert to relative beats per minute, drop decimals
+        let converted:Int = Int((((Float(curVal) - Float(refMin)) / (Float(refMax) - Float(refMin))) * (Float(MAX_BPM)-Float(MIN_BPM))) + Float(MIN_BPM))
+        
+        if converted < MIN_BPM {
+            self.relativeBPM = MIN_BPM
+        } else if converted > MAX_BPM {
+            self.relativeBPM = MAX_BPM
         } else {
-            self.beatsPerMinute = bpm
+            self.relativeBPM = Int(converted)
         }
     }
     
@@ -255,14 +262,11 @@ class HapticsManager: ObservableObject {
             }
             
             // TODO: Calculate repeat delay with bpm
-            let repeatingDelay: Int = Int(60000/self.beatsPerMinute)
+            let repeatingDelay: Int = Int(60000/self.relativeBPM)
             print("Scheduling timer")
             print("RepeatingDelay(ms): \(repeatingDelay)")
             timer.schedule(deadline: .now() + .milliseconds(self.transientInitialDelay), repeating: .milliseconds(repeatingDelay))
             timer.setEventHandler() { [unowned self] in
-                // Recalibrate sharpness and intensity each time the timer fires.
-                //let newLocation = press.location(in: self.transientPalette)
-                //let (sharpness, intensity) = self.sharpnessAndIntensityAt(location: newLocation, in: self.transientPalette)
                 self.playHapticTransient()
             }
             

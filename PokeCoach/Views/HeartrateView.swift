@@ -25,7 +25,7 @@ struct HeartrateView: View {
     @State private var minHr: Int = 9999
     @State private var maxHr: Int = -1
     
-    @State private var speechSynthesizer = AVSpeechSynthesizer()
+    private let speechSynthesizer = AVSpeechSynthesizer()
     
     @State private var audioState: PlayAudioState = PlayAudioState.initial
     
@@ -52,19 +52,16 @@ struct HeartrateView: View {
             let rangedMeanHr = Double(sum) / Double(count)
             let relativeChange = Int(((rangedMeanHr - hrData.meanHr) / hrData.meanHr) * 100)
             
-            let summary = """
-                    From the range you indicated,
-                    your minimum heart rate is \(minHr) beats per minute,
-                    and your maximum heart rate is \(maxHr) beats per minute.
-                    Your averate heart rate in this range is \(Int(rangedMeanHr)) beats per minute,
-                    which is a \(relativeChange) percent change from the overall average of your run. Your overall average was \(Int(hrData.meanHr))
-                    """
+            let summary = "From the range you indicated, your minimum heart rate is \(minHr) beats per minute, and your maximum heart rate is \(maxHr) beats per minute. Your averate heart rate in this range is \(Int(rangedMeanHr)) beats per minute, which is a \(relativeChange) percent change from the overall average of your run. Your overall average was \(Int(hrData.meanHr))."
             
             let utterance = AVSpeechUtterance(string: summary)
-            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+            utterance.volume =  1.0
+            
+            let voice = AVSpeechSynthesisVoice(language: "en-GB")
+            utterance.voice = voice
             
             print("Playing \(summary)")
-            speechSynthesizer.speak(utterance)
+            self.speechSynthesizer.speak(utterance)
         }
         
         audioState = PlayAudioState.initial
@@ -110,7 +107,7 @@ struct HeartrateView: View {
         
         if hapticManager.doHapticFeedback {
             if hapticManager.doTransientInstead {
-                hapticManager.updateTransientHapticInterval(bpm: hrData.datapoints[Int(chartIdx)].hr)
+                hapticManager.updateTransientHapticInterval(refMax: hrData.yMax, refMin: hrData.yMin, curVal: hrData.datapoints[Int(chartIdx)].hr)
                 hapticManager.playTransientPattern()
             } else {
                 let curVal = Float(hrData.datapoints[Int(chartIdx)].hr)
@@ -160,9 +157,9 @@ struct HeartrateView: View {
             }
             
             HStack {
-                Spacer(minLength: 20)
+                Spacer()
                 Label("Time: \(dateToTimeString())", systemImage: "stopwatch")
-                Spacer(minLength: 20)
+                Spacer()
                 Label("Heartrate: \(hrData.datapoints[Int(chartIdx)].hr)", systemImage: "heart")
                 Spacer()
                 if self.audioState == PlayAudioState.initial {
@@ -172,6 +169,7 @@ struct HeartrateView: View {
                 } else if self.audioState == PlayAudioState.ready {
                     Button("Play Audio Summary", action: playSynthesizedSummary)
                 }
+                Spacer()
                 Toggle(isOn: $hapticManager.doHapticFeedback) {
                     Text("Haptics")
                         .frame(maxWidth: 70, alignment: .trailing)
